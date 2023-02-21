@@ -233,8 +233,8 @@ if (theoreticalTempo === 0) {
 return;
 }
 // Adjust the tempo to fit within the 90-180 BPM range
-// while (theoreticalTempo < 70) theoreticalTempo *= 2;
-// while (theoreticalTempo > 140) theoreticalTempo /= 2;
+while (theoreticalTempo < 80) theoreticalTempo *= 2;
+while (theoreticalTempo > 160) theoreticalTempo /= 2;
 
 var foundTempo = tempoCounts.some(function(tempoCount) {
 if (tempoCount.tempo === theoreticalTempo) return tempoCount.count += intervalCount.count;
