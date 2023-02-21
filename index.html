@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div class="container">
+      <div class="display">
+
+      </div>
+      <div class="controllers"></div>
+    </div>
+    
+    
+    <input id="audio_file" type="file" accept="audio/*"></input>
+    <audio id="audio_player"></audio>
+    <script>
+      audio_file.onchange = function() {
+  var file = this.files[0];
+  var reader = new FileReader();
+  var context = new(window.AudioContext || window.webkitAudioContext)();
+  reader.onload = function() {
+    context.decodeAudioData(reader.result, function(buffer) {
+      prepare(buffer);
+    });
+  };
+  reader.readAsArrayBuffer(file);
+};
+    </script>
+  </audio>
+  <p>
+    Most likely tempo: <span id="output"></span>
+  </p>
+  <script src="recorder.js"></script>
+</body>
+</html>
